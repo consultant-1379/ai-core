@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>ai-core</artifactId>
+		<groupId>com.ericsson.nms.security</groupId>
+		<version>1.7.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>ai-core-jar</artifactId>
+	<packaging>jar</packaging>
+	
+	<name>[${project.parent.artifactId}] JAR module</name>
+	
+	<build>
+		<finalName>${project.parent.artifactId}-${project.version}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+        <!-- "ai-core-webmodel-jar" is here because of a SFWK bug. Need to be removed once its fixed. -->
+        <dependency>
+  			<groupId>com.ericsson.oss.services.model.autoprovisioning.core</groupId>
+  			<artifactId>ai-core-webmodel-jar</artifactId>
+  			<version>${version.aicorewebmodel}</version>			
+		</dependency>
+		
+		<!-- Service Framework API dependencies - START -->
+		<dependency>
+			<groupId>com.ericsson.oss.itpf.sdk</groupId>
+			<artifactId>sdk-resources-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.oss.itpf.sdk</groupId>
+			<artifactId>sdk-config-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.ericsson.oss.itpf.sdk</groupId>
+			<artifactId>sdk-upgrade-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Service Framework API dependencies - END -->
+	</dependencies>
+
+</project>
